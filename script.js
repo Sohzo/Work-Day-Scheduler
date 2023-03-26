@@ -1,5 +1,39 @@
+var nineBlock = document.getElementById("#hour-9");
+var tenBlock = document.getElementById("#hour-10");
+var elevenBlock = document.getElementById("#hour-11");
+var twelveBlock = document.getElementById("#hour-12");
+var oneBlock = document.getElementById("#hour-13");
+var twoBlock = document.getElementById("#hour-14");
+var threeBlock = document.getElementById("#hour-15");
+var fourBlock = document.getElementById("#hour-16");
+var fiveBlock = document.getElementById("#hour-17");
+
+blocks = [
+  nineBlock,
+  tenBlock,
+  elevenBlock,
+  twelveBlock,
+  oneBlock,
+  twoBlock,
+  threeBlock,
+  fourBlock,
+  fiveBlock
+]
 
 
+blockTimes = [
+  nineTime="9:00",
+  tenTime="10:00",
+  elevenTime="11:00",
+  twelveTime="12:00",
+  oneTime="13:00",
+  twoTime="14:00",
+  threeTime="15:00",
+  fourTime="16:00",
+  fiveTime="17:00"
+]
+
+var today = dayjs();
 
 
 $(function () {
@@ -15,14 +49,48 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  
+  // FOR every block, IF time is less than current - gray, ELSE IF time is within the hour - green, else red
+  
+  function colorBlocks() {
+    
+    $(".time-block").each(function() {
+      
+      var currentTime = today.format('HH');
+      var compTime = parseInt($(this).attr("id"));
+
+
+      if (compTime == currentTime) {
+
+        $(this).addClass("present");
+
+      } else if (compTime < currentTime) {
+
+        $(this).addClass("past");
+
+      } else {
+
+        $(this).addClass("future");
+      }
+
+      console.log(compTime);
+      console.log(currentTime);
+      
+
+    })
+  }
+  
+  
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-    setInterval(function () {
-      var today = dayjs();
-      $('#currentDay').text(today.format('MMM D, YYYY hh:mm'));
-    }, 1000);
+  setInterval(function () {
+    $('#currentDay').text(today.format('MMM D, YYYY hh:mm'));
+  }, 1000);
+
+  colorBlocks();
+
 });
