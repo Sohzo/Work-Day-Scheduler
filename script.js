@@ -1,12 +1,4 @@
-var nineBlock = document.getElementById("#hour-9");
-var tenBlock = document.getElementById("#hour-10");
-var elevenBlock = document.getElementById("#hour-11");
-var twelveBlock = document.getElementById("#hour-12");
-var oneBlock = document.getElementById("#hour-13");
-var twoBlock = document.getElementById("#hour-14");
-var threeBlock = document.getElementById("#hour-15");
-var fourBlock = document.getElementById("#hour-16");
-var fiveBlock = document.getElementById("#hour-17");
+
 
 var today = dayjs();
 
@@ -24,7 +16,7 @@ $(function () {
     $(".saveBtn").on("click", function() {
 
       var typedEvent = $(this).siblings(".description").val();
-      var whichEvent = $(this).parent().attr("id")
+      var whichEvent = $(this).siblings(".hour").text();
       localStorage.setItem(whichEvent, typedEvent);
 
     })
@@ -49,7 +41,15 @@ $(function () {
     });
   };
   
-  
+  $(".hour").each(function() {
+    var thisBlock = $(this).text();
+    var returnEvent = localStorage.getItem(thisBlock);
+
+    console.log(returnEvent);
+
+    $(this).siblings(".description").val(returnEvent);
+    
+  })
 
   
   // TODO: Add code to get any user input that was saved in localStorage and set
