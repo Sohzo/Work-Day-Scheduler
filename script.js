@@ -8,31 +8,6 @@ var threeBlock = document.getElementById("#hour-15");
 var fourBlock = document.getElementById("#hour-16");
 var fiveBlock = document.getElementById("#hour-17");
 
-blocks = [
-  nineBlock,
-  tenBlock,
-  elevenBlock,
-  twelveBlock,
-  oneBlock,
-  twoBlock,
-  threeBlock,
-  fourBlock,
-  fiveBlock
-]
-
-
-blockTimes = [
-  nineTime="9:00",
-  tenTime="10:00",
-  elevenTime="11:00",
-  twelveTime="12:00",
-  oneTime="13:00",
-  twoTime="14:00",
-  threeTime="15:00",
-  fourTime="16:00",
-  fiveTime="17:00"
-]
-
 var today = dayjs();
 
 
@@ -44,6 +19,15 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   
+  $(document).ready(function() {
+
+    $(".saveBtn").on("click", function() {
+
+      var typedEvent = $(this).siblings(".description").val();
+      localStorage.setItem('Event', typedEvent);
+
+    })
+  })
   
   function colorBlocks() {
 
