@@ -17,3 +17,7 @@ This screenshot shows the page after entering info into the boxes
 # Link to Application
 
 https://sohzo.github.io/Work-Day-Scheduler/
+
+# Sources
+
+The code for changing box color and displaying local storage properties (located in script.js) was partially inspired using Stack Overflow forums
