@@ -24,7 +24,8 @@ $(function () {
     $(".saveBtn").on("click", function() {
 
       var typedEvent = $(this).siblings(".description").val();
-      localStorage.setItem('Event', typedEvent);
+      var whichEvent = $(this).parent().attr("id")
+      localStorage.setItem(whichEvent, typedEvent);
 
     })
   })
