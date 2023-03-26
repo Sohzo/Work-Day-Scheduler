@@ -14,5 +14,6 @@ This screenshot shows the page after entering info into the boxes
 
 ![Page with entered info](./Images/Assignment5_enteredinfo.png)
 
-# Links
+# Link to Application
 
+https://sohzo.github.io/Work-Day-Scheduler/
